@@ -10,3 +10,72 @@ knitr::opts_chunk$set
 library(tidyverse)
 library(palmerpenguins)
 ```
+
+Find the derivative for $f(x) = x^2$ and slope at x = 3
+
+```{r}
+a <- expression(x^2)
+
+derivative_a <- deriv(a, "x")
+
+derivative_a
+
+x <- 3
+
+eval(derivative_a)
+
+```
+
+Find the derivative for $P(a) = 2(3a+2)^4-5$ and slope at a = 1.2
+
+```{r}
+b <- expression(2 * (3*a+2)^4-5)
+
+derivative_b <- deriv(b, "a")
+
+derivative_b
+
+a <- 1.2
+
+eval(derivative_b)
+
+```
+
+Find the derivative for $g(t) = -4t/(t^2 + 1)^3$ and slope at t = 0
+
+```{r}
+c <- expression((-4*t)/(t^2+1)^3)
+
+derivative_c <- D(c, "t")
+
+derivative_c
+
+t <- 0
+
+eval(derivative_c)
+
+```
+
+Plot bill length vs bill depth
+
+```{r}
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species), size = 2)+
+  labs(title = "Bill Length vs Bill Depth",
+       x = "Bill Length (mm)",
+       y = "Bill Depth (mm)")
+```
+
+Jitterplot of flipper length and species
+
+```{r}
+ggplot(data = penguins, aes(x = species,
+                            y = flipper_length_mm)) +
+  geom_jitter(aes(color = species), size =2) +
+  labs(title = "Flipper Length (mm) by Species",
+       x = "Species",
+       y = "Flipper Length (mm)")
+```
+
+
+
